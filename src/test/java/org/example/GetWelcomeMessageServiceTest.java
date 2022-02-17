@@ -16,4 +16,17 @@ class GetWelcomeMessageServiceTest {
                 .isEqualTo("Hi. What can I do for you?");
 
     }
+    @Test
+    void offline() {
+
+        GetWelcomeMessageService service = new GetWelcomeMessageService();
+
+        service.nestState();
+
+        String welcomeMessage = service.getWelcomeMessage();
+
+        Assertions.assertThat(welcomeMessage)
+                .isEqualTo("Offline. See you tomorrow.");
+
+    }
 }
