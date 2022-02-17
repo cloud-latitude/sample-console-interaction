@@ -1,16 +1,41 @@
 package org.example;
 
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class GetWelcomeMessageServiceTest {
 
+
     @Test
-    void name() {
+    void online() {
 
-        Assertions.assertEquals(3, 3);
+        GetWelcomeMessageService service = new GetWelcomeMessageService();
 
-        org.assertj.core.api.Assertions.assertThat(2)
-                .isEqualTo(2);
+        Assertions.assertThat(service.getWelcomeMessage())
+                .isEqualTo("Hi. What can I do for you?");
+
+    }
+    @Test
+    void back_to_online() {
+
+        GetWelcomeMessageService service = new GetWelcomeMessageService();
+
+        service.nextState();
+        service.nextState();
+
+        Assertions.assertThat(service.getWelcomeMessage())
+                .isEqualTo("Hi. What can I do for you?");
+
+    }
+    @Test
+    void offline() {
+
+        GetWelcomeMessageService service = new GetWelcomeMessageService();
+
+        service.nextState();
+
+        Assertions.assertThat(service.getWelcomeMessage())
+                .isEqualTo("Offline. See you tomorrow.");
+
     }
 }
