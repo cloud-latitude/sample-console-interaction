@@ -5,14 +5,26 @@ import org.junit.jupiter.api.Test;
 
 class GetWelcomeMessageServiceTest {
 
+    private GetWelcomeMessageService service;
+
     @Test
-    void normal_state() {
+    void online() {
 
         GetWelcomeMessageService service = new GetWelcomeMessageService();
 
-        String welcomeMessage = service.getWelcomeMessage();
+        Assertions.assertThat(service.getWelcomeMessage())
+                .isEqualTo("Hi. What can I do for you?");
 
-        Assertions.assertThat(welcomeMessage)
+    }
+    @Test
+    void back_to_online() {
+
+        GetWelcomeMessageService service = new GetWelcomeMessageService();
+
+        service.nextState();
+        service.nextState();
+
+        Assertions.assertThat(service.getWelcomeMessage())
                 .isEqualTo("Hi. What can I do for you?");
 
     }
@@ -21,11 +33,9 @@ class GetWelcomeMessageServiceTest {
 
         GetWelcomeMessageService service = new GetWelcomeMessageService();
 
-        service.nestState();
+        service.nextState();
 
-        String welcomeMessage = service.getWelcomeMessage();
-
-        Assertions.assertThat(welcomeMessage)
+        Assertions.assertThat(service.getWelcomeMessage())
                 .isEqualTo("Offline. See you tomorrow.");
 
     }

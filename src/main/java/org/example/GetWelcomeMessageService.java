@@ -9,15 +9,18 @@ public class GetWelcomeMessageService {
 
         if (this.state.equals("Offline")) {
             return "Offline. See you tomorrow.";
+        } else {
+            return "Hi. What can I do for you?";
         }
-
-        return "Hi. What can I do for you?";
     }
 
-    public void nestState() {
+    public void nextState() {
 
-        this.state = "Offline";
-
+        if (this.state.equals("Offline")) {
+            this.state = "Online";
+        } else {
+            this.state = "Offline";
+        }
     }
 
 }
