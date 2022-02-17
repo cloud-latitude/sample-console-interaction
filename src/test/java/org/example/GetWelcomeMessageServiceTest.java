@@ -7,6 +7,10 @@ class GetWelcomeMessageServiceTest {
 
     @Test
     void name() {
+
         Assertions.assertEquals(3, 3);
+
+        org.assertj.core.api.Assertions.assertThat(2)
+                .isEqualTo(2);
     }
 }
