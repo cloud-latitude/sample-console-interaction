@@ -1,16 +1,19 @@
 package org.example;
 
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class GetWelcomeMessageServiceTest {
 
     @Test
-    void name() {
+    void normal_state() {
 
-        Assertions.assertEquals(3, 3);
+        GetWelcomeMessageService service = new GetWelcomeMessageService();
 
-        org.assertj.core.api.Assertions.assertThat(2)
-                .isEqualTo(2);
+        String welcomeMessage = service.getWelcomeMessage();
+
+        Assertions.assertThat(welcomeMessage)
+                .isEqualTo("Hi. What can I do for you?");
+
     }
 }
