@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 class GetWelcomeMessageServiceTest {
 
-    private GetWelcomeMessageService service;
 
     @Test
     void online() {

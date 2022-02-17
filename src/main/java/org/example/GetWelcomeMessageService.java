@@ -4,7 +4,6 @@ public class GetWelcomeMessageService {
 
     private String state = "Online";
 
-
     public String getWelcomeMessage() {
 
         if (this.state.equals("Offline")) {
